@@ -13,7 +13,7 @@ public class Library {
     public ArrayList<Book> getAvailableBooks() {
         ArrayList<Book> availableBooks = new ArrayList<Book>();
         for (Book book : books) {
-            if (!book.isAvailable()) {
+            if (book.isAvailable()) {
                 availableBooks.add(book);
             }
         }

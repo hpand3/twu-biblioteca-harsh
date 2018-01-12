@@ -8,7 +8,7 @@ public class BookTest {
 
     @Before
     public void setup() {
-        book = new Book(2009, "why?");
+        book = new Book("new book",2009, "why?");
     }
 
     @Test

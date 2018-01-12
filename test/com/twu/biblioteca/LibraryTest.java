@@ -19,10 +19,10 @@ public class LibraryTest {
     private Library getLibraryWithBooks() {
         ArrayList<Book> books = new ArrayList<Book>();
 
-        Book bookNotAvailable = new Book(2001, "Not Available");
+        Book bookNotAvailable = new Book("New Book 1",2001, "Not Available");
         bookNotAvailable.checkedOut();
 
-        Book bookAvailable = new Book(2002, "Available");
+        Book bookAvailable = new Book("New Book 2",2002, "Available");
 
         // Add books to the library
         books.add(bookNotAvailable);
@@ -33,8 +33,12 @@ public class LibraryTest {
 
     @Test
     public void getAvailableBooks_oneBookIsNotCheckedOut_oneBookWillBeShownInOutput() {
-        assertEquals(1, lib.getAvailableBooks().size());
-        assertEquals(2002, lib.getAvailableBooks().get(0).getYear());
-        assertEquals("Available", lib.getAvailableBooks().get(0).getAuthor());
+        ArrayList<Book> availableBooks = lib.getAvailableBooks();
+        assertEquals(1, availableBooks.size());
+        assertEquals("New Book 2", availableBooks.get(0).getTitle());
+        assertEquals(2002, availableBooks.get(0).getYear());
+        assertEquals("Available", availableBooks.get(0).getAuthor());
+
+
     }
 }

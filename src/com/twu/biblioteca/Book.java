@@ -3,9 +3,11 @@ package com.twu.biblioteca;
 public class Book {
     private int year;
     private String author;
+    private String title;
     private boolean checkedOut;
 
-    public Book(int year, String author) {
+    public Book(String title, int year, String author) {
+        this.title = title;
         this.year = year;
         this.author = author;
         this.checkedOut = false;
@@ -17,6 +19,10 @@ public class Book {
 
     public String getAuthor() {
         return this.author;
+    }
+
+    public String getTitle() {
+        return this.title;
     }
 
     public boolean isAvailable() {

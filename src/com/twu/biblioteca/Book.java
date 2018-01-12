@@ -14,7 +14,11 @@ public class Book {
         return this.checkedOut;
     }
 
-    public void setCheckoutStatus(boolean status) {
-        this.checkedOut = status;
+    public void checkedOut() {
+        this.checkedOut = true;
+    }
+
+    public void returned() {
+        this.checkedOut = false;
     }
 }

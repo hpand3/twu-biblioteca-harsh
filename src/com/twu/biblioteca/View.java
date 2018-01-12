@@ -4,4 +4,10 @@ public class View {
     public View() {
 
     }
+
+    public String welcome() {
+        return "Welcome!";
+    }
+
+
 }

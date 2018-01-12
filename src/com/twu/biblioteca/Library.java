@@ -4,12 +4,20 @@ import java.util.ArrayList;
 
 public class Library {
 
-    public Library(ArrayList<Book> books) {
+    private ArrayList<Book> books;
 
+    public Library(ArrayList<Book> books) {
+        this.books = books;
     }
 
     public ArrayList<Book> getAvailableBooks() {
-        return null;
+        ArrayList<Book> availableBooks = new ArrayList<Book>();
+        for (Book book : books) {
+            if (!book.isAvailable()) {
+                availableBooks.add(book);
+            }
+        }
+        return availableBooks;
     }
 
 }

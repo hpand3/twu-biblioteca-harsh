@@ -14,12 +14,12 @@ public class BookTest {
     @Test
     public void isCheckedOut_bookIsCheckedOut_True() {
         book.checkedOut();
-        assertEquals(true, book.isCheckedOut());
+        assertEquals(false, book.isAvailable());
     }
 
     @Test
     public void isCheckedOut_bookIsNotCheckedOut_False() {
         book.returned();
-        assertEquals(false, book.isCheckedOut());
+        assertEquals(true, book.isAvailable());
     }
 }

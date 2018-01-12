@@ -8,10 +8,19 @@ public class Book {
     public Book(int year, String author) {
         this.year = year;
         this.author = author;
+        this.checkedOut = false;
     }
 
-    public boolean isCheckedOut() {
-        return this.checkedOut;
+    public int getYear() {
+        return this.year;
+    }
+
+    public String getAuthor() {
+        return this.author;
+    }
+
+    public boolean isAvailable() {
+        return !this.checkedOut;
     }
 
     public void checkedOut() {

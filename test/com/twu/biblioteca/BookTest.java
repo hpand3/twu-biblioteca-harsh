@@ -8,7 +8,7 @@ public class BookTest {
 
     @Before
     public void setup() {
-        book = new Book("new book",2009, "why?");
+        book = new Book("New Book",2009, "John Smith");
     }
 
     @Test
@@ -21,5 +21,10 @@ public class BookTest {
     public void isCheckedOut_bookIsNotCheckedOut_False() {
         book.returned();
         assertEquals(true, book.isAvailable());
+    }
+
+    @Test
+    public void toString_bookWithTitleYearAuthor_StringRepresentationOfBook() {
+        assertEquals("New Book - John Smith - 2009", book.toString());
     }
 }

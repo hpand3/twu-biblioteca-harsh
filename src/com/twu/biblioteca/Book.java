@@ -36,4 +36,8 @@ public class Book {
     public void returned() {
         this.checkedOut = false;
     }
+
+    public String toString() {
+        return String.format("%s - %s - %d", this.title, this.author, this.year);
+    }
 }

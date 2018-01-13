@@ -1,7 +1,7 @@
 package com.twu.biblioteca;
 
-public interface ConsoleCommand {
-    public String command();
-    public String helpText();
-    public void exec();
+interface ConsoleCommand {
+    boolean matches(String commandText);
+    String helpText();
+    String exec(String arg);
 }

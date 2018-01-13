@@ -11,7 +11,7 @@ public class BookTest {
         book = new Book("New Book",2009, "John Smith");
     }
 
-    @Test(expected=BookCheckoutException.class)
+    @Test(expected = BookCheckoutException.class)
     public void checkout_bookIsCheckedOut_ThrowsBookCheckoutException() throws BookCheckoutException {
         // First checkout
         book.checkout();
@@ -20,11 +20,20 @@ public class BookTest {
     }
 
     @Test
-    public void checkout_bookIsNotCheckedOut_NoExceptionIsThrown() throws BookCheckoutException{
+    public void checkout_bookIsNotCheckedOut_NoExceptionIsThrown() throws BookCheckoutException {
         book.checkout();
     }
 
-    
+    @Test(expected = BookReturnException.class)
+    public void returnBook_bookIsAlreadyPresent_ThrowsBookReturnException() throws BookReturnException {
+        book.returnBook();
+    }
+
+    @Test
+    public void returnBook_bookIsCheckedOut_NoExceptionIsThrown() throws BookCheckoutException, BookReturnException {
+        book.checkout();
+        book.returnBook();
+    }
 
     @Test
     public void toString_bookWithTitleYearAuthor_StringRepresentationOfBook() {

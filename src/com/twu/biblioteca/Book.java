@@ -37,8 +37,13 @@ public class Book {
         }
     }
 
-    public void returned() {
-        this.checkedOut = false;
+    public void returnBook() throws BookReturnException {
+        if (!isAvailable()) {
+            this.checkedOut = false;
+        } else {
+            throw new BookReturnException("The book is already available!");
+        }
+
     }
 
     public String toString() {

@@ -2,11 +2,11 @@ package com.twu.biblioteca;
 
 public class View {
     public View() {
-
+        welcome();
     }
 
-    public String welcome() {
-        return "Welcome!";
+    public void welcome() {
+        System.out.println("Welcome!");
     }
 
 

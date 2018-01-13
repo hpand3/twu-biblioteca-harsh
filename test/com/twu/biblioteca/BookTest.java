@@ -12,7 +12,7 @@ public class BookTest {
     }
 
     @Test(expected=BookCheckoutException.class)
-    public void isAvailable_bookIsCheckedOut_ThrowsBookCheckoutException() throws BookCheckoutException {
+    public void checkout_bookIsCheckedOut_ThrowsBookCheckoutException() throws BookCheckoutException {
         // First checkout
         book.checkout();
         // Second attempt to checkout for the same book
@@ -20,9 +20,11 @@ public class BookTest {
     }
 
     @Test
-    public void isAvailable_bookIsNotCheckedOut_NoExceptionIsThrown() throws BookCheckoutException{
+    public void checkout_bookIsNotCheckedOut_NoExceptionIsThrown() throws BookCheckoutException{
         book.checkout();
     }
+
+    
 
     @Test
     public void toString_bookWithTitleYearAuthor_StringRepresentationOfBook() {

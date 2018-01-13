@@ -29,8 +29,12 @@ public class Book {
         return !this.checkedOut;
     }
 
-    public void checkedOut() {
-        this.checkedOut = true;
+    public void checkout() throws BookCheckoutException {
+        if (isAvailable()) {
+            this.checkedOut = true;
+        } else {
+            throw new BookCheckoutException("The book has been already checked out!");
+        }
     }
 
     public void returned() {

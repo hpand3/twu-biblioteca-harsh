@@ -11,20 +11,23 @@ public class BookTest {
         book = new Book("New Book",2009, "John Smith");
     }
 
-    @Test
-    public void isCheckedOut_bookIsCheckedOut_True() {
-        book.checkedOut();
-        assertEquals(false, book.isAvailable());
+    @Test(expected=BookCheckoutException.class)
+    public void isAvailable_bookIsCheckedOut_ThrowsBookCheckoutException() throws BookCheckoutException {
+        // First checkout
+        book.checkout();
+        // Second attempt to checkout for the same book
+        book.checkout();
     }
 
     @Test
-    public void isCheckedOut_bookIsNotCheckedOut_False() {
-        book.returned();
-        assertEquals(true, book.isAvailable());
+    public void isAvailable_bookIsNotCheckedOut_NoExceptionIsThrown() throws BookCheckoutException{
+        book.checkout();
     }
 
     @Test
     public void toString_bookWithTitleYearAuthor_StringRepresentationOfBook() {
         assertEquals("New Book - John Smith - 2009", book.toString());
     }
+
+
 }

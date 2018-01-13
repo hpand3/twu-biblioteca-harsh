@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,7 +21,13 @@ public class LibraryTest {
         ArrayList<Book> books = new ArrayList<Book>();
 
         Book bookNotAvailable = new Book("New Book 1",2001, "Not Available");
-        bookNotAvailable.checkedOut();
+
+        try {
+            bookNotAvailable.checkout();
+        } catch (BookCheckoutException bc) {
+            Assert.fail();
+        }
+
 
         Book bookAvailable = new Book("New Book 2",2002, "Available");
 

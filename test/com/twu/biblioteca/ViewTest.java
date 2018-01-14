@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,8 +26,13 @@ public class ViewTest {
 
     @Test
     public void welcome_customerStartsApplication_welcomeMessage() {
-        assertEquals("Welcome!\n", outContent.toString());
+        String listBooksOutput = "Title - Author - Year\n" +
+                "Code Complete - Steve McConnell - 1993\n" +
+                "Clean Code - Robert Cecil Martin - 2008\n";
+        assertEquals("Welcome!\n" + listBooksOutput, outContent.toString());
     }
+
+
 
     @After
     public void cleanUpStreams() {

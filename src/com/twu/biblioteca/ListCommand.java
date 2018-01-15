@@ -16,7 +16,20 @@ public class ListCommand implements ConsoleCommand {
         return "Lists all the available items in the library";
     }
 
-    public String exec(String item) {
-        return null;
+    public boolean exec(String item) {
+        if (item.equals("books")) {
+            String title = "Title - Author - Year";
+            String booksStringRepr = "";
+            for (Book book : lib.getAvailableBooks()) {
+                booksStringRepr += book.toString();
+                booksStringRepr += "\n";
+            }
+
+            System.out.print(title + "\n" + booksStringRepr);
+            return true;
+        }
+
+        return false;
+
     }
 }

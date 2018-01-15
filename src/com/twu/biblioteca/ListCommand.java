@@ -12,10 +12,6 @@ public class ListCommand implements ConsoleCommand {
         return commandText.contains("list ");
     }
 
-    public String helpText() {
-        return "Lists all the available items in the library";
-    }
-
     public boolean exec(String item) {
         if (item.equals("books")) {
             String title = "Title - Author - Year";

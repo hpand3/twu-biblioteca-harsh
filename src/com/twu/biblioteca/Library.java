@@ -20,4 +20,7 @@ public class Library {
         return availableBooks;
     }
 
+    public ArrayList<Book> getBooks() {
+        return books;
+    }
 }

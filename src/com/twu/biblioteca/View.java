@@ -2,23 +2,44 @@ package com.twu.biblioteca;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class View {
+
+    private AllCommands allCommands;
+    // Create a single shared Scanner for keyboard input
+    private static Scanner scanner = new Scanner( System.in );
+
     public View() {
         Library lib = createLibrary();
+        allCommands = new AllCommands(createCommands(lib));
+
+        // Prints welcome when all the classes are initialised
         welcome();
+
+        while (true) {
+            String line = scanner.nextLine();
+            executeCommand(line);
+        }
     }
 
-    public void welcome() {
+    private void welcome() {
         System.out.println("Welcome!");
-        executeCommand("list books");
+
+        System.out.println();
+
+        printMainMenuOptions();
     }
 
-    public void executeCommand(String command) {
-        String listBooksOutput = "Title - Author - Year\n" +
-                "Code Complete - Steve McConnell - 1993\n" +
-                "Clean Code - Robert Cecil Martin - 2008";
-        System.out.println(listBooksOutput);
+    private void executeCommand(String commandText) {
+        allCommands.execCommand(commandText);
+    }
+
+    private void printMainMenuOptions() {
+        System.out.println("Main Menu Options:");
+        for (String option : getMainMenuOptions()) {
+            System.out.println(option);
+        }
     }
 
     private Library createLibrary() {
@@ -28,4 +49,18 @@ public class View {
         return new Library(books);
     }
 
+    private ArrayList<ConsoleCommand> createCommands(Library lib) {
+        ArrayList<ConsoleCommand> consoleCommands = new ArrayList<ConsoleCommand>();
+        consoleCommands.add(new ListCommand("list", lib));
+        consoleCommands.add(new ReturnCommand("return", lib));
+        consoleCommands.add(new CheckoutCommand("checkout", lib));
+        consoleCommands.add(new QuitCommand("Quit"));
+        return consoleCommands;
+    }
+
+    private ArrayList<String> getMainMenuOptions() {
+        ArrayList<String> options = new ArrayList<String>();
+        options.add("List Books");
+        return options;
+    }
 }

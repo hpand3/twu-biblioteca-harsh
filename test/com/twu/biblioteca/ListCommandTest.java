@@ -34,12 +34,12 @@ public class ListCommandTest {
         System.setOut(new PrintStream(outContent));
         System.setErr(new PrintStream(errContent));
         Library lib = getLibraryWithBooks();
-        lc = new ListCommand("list", lib);
+        lc = new ListCommand("List", lib);
     }
 
     @Test
     public void matches_commandTextIncludesCommand_True() {
-        assertTrue(lc.matches("list books"));
+        assertTrue(lc.matches("List Books"));
     }
 
     @Test
@@ -53,7 +53,7 @@ public class ListCommandTest {
                 "Code Complete - Steve McConnell - 1993\n" +
                 "Clean Code - Robert Cecil Martin - 2008\n";
 
-        assertTrue(lc.exec("list books"));
+        assertTrue(lc.exec("List Books"));
 
         assertEquals(listBooksOutput, outContent.toString());
     }

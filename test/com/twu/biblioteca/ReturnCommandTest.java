@@ -34,7 +34,7 @@ public class ReturnCommandTest {
         System.setErr(new PrintStream(errContent));
         Library lib = getLibraryWithBooks();
         lib.getAvailableBooks().get(0).checkout(); // Code Complete
-        rc = new ReturnCommand("return", lib);
+        rc = new ReturnCommand("Return", lib);
     }
 
     @Test
@@ -44,26 +44,26 @@ public class ReturnCommandTest {
 
     @Test
     public void matches_commandTextIncludesCommand_True() {
-        assertTrue(rc.matches("return Code Complete"));
+        assertTrue(rc.matches("Return Code Complete"));
     }
 
     @Test
     public void exec_ReturningTheCheckedOutBook_ReturnsBookSuccessfully() {
-        assertTrue(rc.exec("return Code Complete"));
+        assertTrue(rc.exec("Return Code Complete"));
 
         assertEquals("Thank you for returning the book.\n", outContent.toString());
     }
 
     @Test
     public void exec_ReturningAnAlreadyReturnedBook_ReturnUnSuccessfull() {
-        assertFalse(rc.exec("return Clean Code"));
+        assertFalse(rc.exec("Return Clean Code"));
 
         assertEquals("That is not a valid book to return.\n", outContent.toString());
     }
 
     @Test
     public void exec_ReturningABookNotPresentInLibrary_ReturnUnSuccessfull() {
-        assertFalse(rc.exec("return Design patterns"));
+        assertFalse(rc.exec("Return Design patterns"));
 
         assertEquals("That is not a valid book to return.\n", outContent.toString());
     }

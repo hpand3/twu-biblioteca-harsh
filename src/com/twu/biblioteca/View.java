@@ -51,9 +51,9 @@ public class View {
 
     private ArrayList<ConsoleCommand> createCommands(Library lib) {
         ArrayList<ConsoleCommand> consoleCommands = new ArrayList<ConsoleCommand>();
-        consoleCommands.add(new ListCommand("list", lib));
-        consoleCommands.add(new ReturnCommand("return", lib));
-        consoleCommands.add(new CheckoutCommand("checkout", lib));
+        consoleCommands.add(new ListCommand("List", lib));
+        consoleCommands.add(new ReturnCommand("Return", lib));
+        consoleCommands.add(new CheckoutCommand("Checkout", lib));
         consoleCommands.add(new QuitCommand("Quit"));
         return consoleCommands;
     }

@@ -34,7 +34,7 @@ public class CheckoutCommandTest {
         System.setErr(new PrintStream(errContent));
         Library lib = getLibraryWithBooks();
         lib.getAvailableBooks().get(1).checkout(); // Clean Code
-        cc = new CheckoutCommand("checkout", lib);
+        cc = new CheckoutCommand("Checkout", lib);
     }
 
     @Test
@@ -44,26 +44,26 @@ public class CheckoutCommandTest {
 
     @Test
     public void matches_commandTextIncludesCommand_True() {
-        assertTrue(cc.matches("checkout Code Complete"));
+        assertTrue(cc.matches("Checkout Code Complete"));
     }
 
     @Test
     public void exec_CheckingOutAnAvailableBook_CheckoutSuccessfully() {
-        assertTrue(cc.exec("checkout Code Complete"));
+        assertTrue(cc.exec("Checkout Code Complete"));
 
         assertEquals("Thank you! Enjoy the book.\n", outContent.toString());
     }
 
     @Test
     public void exec_CheckingOutAnUnavailableBook_CheckoutUnSuccessful() {
-        assertFalse(cc.exec("checkout Clean Code"));
+        assertFalse(cc.exec("Checkout Clean Code"));
 
         assertEquals("That book is not available.\n", outContent.toString());
     }
 
     @Test
     public void exec_CheckingOutABookNotPresentInLibrary_CheckoutUnSuccessful() {
-        assertFalse(cc.exec("checkout Design patterns"));
+        assertFalse(cc.exec("Checkout Design patterns"));
 
         assertEquals("That book is not available.\n", outContent.toString());
     }

@@ -15,8 +15,8 @@ public class ListCommand implements ConsoleCommand {
     }
 
     public boolean exec(String commandText) {
-        commandText = commandText.replace(this.commandWithSpace, "");
-        if (commandText.equals("books")) {
+        String bookName = commandText.replace(this.commandWithSpace, "");
+        if (bookName.equals("books")) {
             String title = "Title - Author - Year";
             String booksStringRepr = "";
             for (Book book : lib.getAvailableBooks()) {

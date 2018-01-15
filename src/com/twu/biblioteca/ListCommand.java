@@ -3,17 +3,20 @@ package com.twu.biblioteca;
 public class ListCommand implements ConsoleCommand {
 
     private Library lib;
+    private String commandWithSpace;
 
-    public ListCommand(Library lib) {
+    public ListCommand(String command, Library lib) {
         this.lib = lib;
+        this.commandWithSpace = command + " ";
     }
 
     public boolean matches(String commandText) {
-        return commandText.contains("list ");
+        return commandText.contains(this.commandWithSpace);
     }
 
-    public boolean exec(String item) {
-        if (item.equals("books")) {
+    public boolean exec(String commandText) {
+        commandText = commandText.replace(this.commandWithSpace, "");
+        if (commandText.equals("books")) {
             String title = "Title - Author - Year";
             String booksStringRepr = "";
             for (Book book : lib.getAvailableBooks()) {

@@ -19,17 +19,23 @@ public class ViewTest {
 
     @Before
     public void setUpStreams() {
+        // Research dependency injection
         System.setOut(new PrintStream(outContent));
         System.setErr(new PrintStream(errContent));
-        view = new View();
+
+        PrintStream out = new PrintStream(outContent);
+        view = new View(out);
+
+        System.out.println("NEW");
+        System.out.println(out);
     }
 
 //    Have to comment out the infinite loop in View to run this test.
-//    @Test
-//    public void welcome_customerStartsApplication_welcomeMessage() {
+    @Test
+    public void welcome_customerStartsApplication_welcomeMessage() {
 //        String mainMenuOptions = "Main Menu Options:\n" + "List Books\n";
 //        assertEquals("Welcome!\n\n" + mainMenuOptions, outContent.toString());
-//    }
+    }
 
     @After
     public void cleanUpStreams() {

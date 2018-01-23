@@ -6,6 +6,6 @@ public class BibliotecaApp {
 
     public static void main(String[] args) {
         Console console = System.console();
-        View view = new View();
+        View view = new View(System.out);
     }
 }

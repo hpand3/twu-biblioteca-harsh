@@ -2,6 +2,8 @@ package com.twu.biblioteca;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class BookTest {
     Book book;
@@ -22,6 +24,7 @@ public class BookTest {
     @Test
     public void checkout_bookIsNotCheckedOut_NoExceptionIsThrown() throws BookCheckoutException {
         book.checkout();
+        assertFalse(book.isAvailable());
     }
 
     @Test(expected = BookReturnException.class)
@@ -33,6 +36,7 @@ public class BookTest {
     public void returnBook_bookIsCheckedOut_NoExceptionIsThrown() throws BookCheckoutException, BookReturnException {
         book.checkout();
         book.returnBook();
+        assertTrue(book.isAvailable());
     }
 
     @Test

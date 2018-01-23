@@ -17,6 +17,8 @@ public class Library {
                 availableBooks.add(book);
             }
         }
+        // Look at Reduce lambda functions
+//        return books.stream().filter(book -> book.isAvailable()).toArray();
         return availableBooks;
     }
 

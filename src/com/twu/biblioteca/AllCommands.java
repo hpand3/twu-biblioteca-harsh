@@ -11,17 +11,16 @@ public class AllCommands implements CommandFactory {
     }
 
     public void execCommand(String commandText) {
-        boolean commandFound = false;
+        boolean commandExec = false;
 
         for (ConsoleCommand cc : this.commands) {
             if (cc.matches(commandText)) {
-                cc.exec(commandText);
-                commandFound = true;
+                commandExec = cc.exec(commandText);
                 break;
             }
         }
 
-        if (!commandFound) {
+        if (!commandExec) {
             System.out.println("Select a valid option!");
         }
     }

@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -10,7 +11,10 @@ public class View {
     // Create a single shared Scanner for keyboard input
     private static Scanner scanner = new Scanner( System.in );
 
-    public View() {
+    PrintStream outContent;
+
+    public View(PrintStream outContent) {
+        this.outContent = outContent;
         Library lib = createLibrary();
         allCommands = new AllCommands(createCommands(lib));
 
@@ -24,9 +28,9 @@ public class View {
     }
 
     private void welcome() {
-        System.out.println("Welcome!");
+        outContent.println("Welcome!");
 
-        System.out.println();
+        outContent.println();
 
         printMainMenuOptions();
     }
@@ -36,9 +40,9 @@ public class View {
     }
 
     private void printMainMenuOptions() {
-        System.out.println("Main Menu Options:");
+        outContent.println("Main Menu Options:");
         for (String option : getMainMenuOptions()) {
-            System.out.println(option);
+            outContent.println(option);
         }
     }
 
